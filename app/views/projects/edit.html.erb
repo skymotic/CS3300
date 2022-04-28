@@ -1,6 +1,12 @@
-<h1>Editing Project</h1>
+<div class="container-fluid text-center">
+    <h1>Editing Project</h1><br>
 
-<%= render 'form', project: @project %>
+    <div class="container-fluid">
+        <div class="card">
+            <%= render 'form', project: @project %>
+        </div>
+    </div>
 
-<%= link_to 'Show', @project %> |
-<%= link_to 'Back', projects_path %>
+    <%= link_to 'Show', @project %> |
+    <%= link_to 'Back', projects_path %>
+</div>
