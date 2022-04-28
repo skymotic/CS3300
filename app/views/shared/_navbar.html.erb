@@ -1,0 +1,28 @@
+<nav class="navbar navbar-dark bg-dark">
+
+  <a href='/' class="btn btn-outline-light" tabindex="-1" role="button" aria-disabled="true">Home</a>
+
+  <ul class="navbar-nav ml-auto">
+    <% if user_signed_in? %>
+      <form class="container-fluid justify-content-start">
+      
+        <button class="btn btn-outline-light btn-sm mr-2">
+          <%= link_to 'Sign out', destroy_user_session_path, method: :delete, class: 'btn' %>
+        </button>
+
+      </form>
+    <% else %>
+      <form class="container-fluid justify-content-start">
+
+        <button class="btn btn-outline-light btn-sm mr-2">
+          <%= link_to 'Register', new_user_registration_path, class: 'btn' %>
+        </button>
+
+        <button class="btn btn-outline-light btn-sm">
+          <%= link_to 'Sign in', new_user_session_path, class: 'btn' %>
+        </button>
+
+      </form>
+    <% end %>
+  </ul>
+</nav>
