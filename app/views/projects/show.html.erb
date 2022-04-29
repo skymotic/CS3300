@@ -12,8 +12,19 @@
     </div>
 
     <div class="card-footer text-muted">
-      <%= link_to 'Edit', edit_project_path(@project) %> |
-      <%= link_to 'Back', projects_path %>
+      <% if user_signed_in? %>
+        <button class="btn btn-outline-dark">
+          <%= link_to 'Edit', edit_project_path(@project) %>
+        </button>
+
+        <button class="btn btn-outline-dark">
+          <%= link_to 'Back', projects_path %>
+        </button>
+      <% else %>
+        <button class="btn btn-outline-dark">
+        <%= link_to 'Back', projects_path %>
+        </button>
+      <% end %>
     </div>
   </div>
 </div>

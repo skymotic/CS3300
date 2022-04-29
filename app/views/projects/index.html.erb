@@ -13,11 +13,27 @@
         <div class="card-body">
           <%= project.description %>
         </div>
-        <div class="card-footer test-muted">
-          <%= link_to 'Show', project %> |
-          <%= link_to 'Edit', edit_project_path(project) %> |
-          <%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %>
-        </div>
+        <% if user_signed_in? %>
+          <div class="card-footer text-muted">
+            <button class="btn btn-outline-dark">
+              <%= link_to 'Show', project %>
+            </button>
+
+            <button class="btn btn-outline-dark">
+              <%= link_to 'Edit', edit_project_path(project) %>
+            </button>
+
+            <button class="btn btn-outline-dark">
+              <%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %>
+            </button>
+          </div>
+        <% else %>
+          <div class="card-footer text-muted">
+            <button class="btn btn-outline-dark">
+              <%= link_to 'Show', project %>
+            </button>
+          </div>
+        <% end %>
       </div>
     </div>
   <% end %>
