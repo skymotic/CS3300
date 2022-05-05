@@ -7,4 +7,4 @@ RSpec.describe "hello spec" do
       expect(string).to eq("")
     end
   end
-endc
+end

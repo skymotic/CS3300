@@ -18,6 +18,10 @@
         </button>
 
         <button class="btn btn-outline-dark">
+          <%= link_to 'Destroy', @project, method: :delete %>
+        </button>
+
+        <button class="btn btn-outline-dark">
           <%= link_to 'Back', projects_path %>
         </button>
       <% else %>

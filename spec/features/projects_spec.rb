@@ -4,19 +4,19 @@ RSpec.feature "Projects", type: :feature do
     context "Create new project" do
           before(:each) do
                   visit new_project_path
-                        within("form") do
+                        within("form:nth-child(1)") do
                                   fill_in "Title", with: "Test title"
                                         end
                             end
 
               scenario "should be successful" do
                       fill_in "Description", with: "Test description"
-                            click_button "New Project"
+                            click_button "Create Project"
                                   expect(page).to have_content("Project was successfully created")
                                       end
 
                   scenario "should fail" do
-                          click_button "New Project"
+                          click_button "Create Project"
                                 expect(page).to have_content("Description can't be blank")
                                     end
                     end
@@ -28,7 +28,7 @@ RSpec.feature "Projects", type: :feature do
                             end
 
                     scenario "should be successful" do
-                            within("form") do
+                            within("form:nth-child(1)") do
                                       fill_in "Description", with: "New description content"
                                             end
                                   click_button "Update Project"
@@ -36,7 +36,7 @@ RSpec.feature "Projects", type: :feature do
                                             end
 
                         scenario "should fail" do
-                                within("form") do
+                                within("form:nth-child(1)") do
                                           fill_in "Description", with: ""
                                                 end
                                       click_button "Update Project"
@@ -47,8 +47,8 @@ RSpec.feature "Projects", type: :feature do
         context "Remove existing project" do
               let!(:project) { Project.create(title: "Test title", description: "Test content") }
                   scenario "remove project" do
-                          visit projects_path
-                                click_link "Destroy"
+                          visit projects_path(project)
+                                click_link "destroy"
                                       expect(page).to have_content("Project was successfully destroyed")
                                             expect(Project.count).to eq(0)
                                                 end
